@@ -39,7 +39,7 @@ app.use('*', (request: Request, response: Response) => {
     response.status(404).send('Error: Page not found for shizzle');
 });
 
-// CONFIGURE EXPRESS GLOBAL ERROR HANDLER
+// CONFIGURE EXPRESS GLOBAL ERROR HANDLERs
 app.use((error: any, request: Request, response: Response, next: NextFunction) => {
     const defaultErr = {
         log: 'Express error handler caught unknown middleware error',
