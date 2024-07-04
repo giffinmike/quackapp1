@@ -3,7 +3,7 @@ import React from 'react';
 function App() {
   return (
     <div>
-      <p>Hello Turkey Time asdfsdf</p>
+      <p>Hello Turkey Time</p>
     </div>
   );
 }
