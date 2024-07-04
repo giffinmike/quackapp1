@@ -50,7 +50,7 @@ app.use((error: any, request: Request, response: Response, next: NextFunction) =
     response.status(errorObj.status).json(errorObj.message.err);
 });
 
-// START SERVER
+// START SERVERs
 app.listen(PORT, () => {
     console.log(`The server is connected and running on port: ${PORT}`);
 });
