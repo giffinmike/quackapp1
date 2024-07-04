@@ -17,18 +17,18 @@ app.use(express.json()); // Add this line to parse JSON bodies
 // API ROUTES
 app.get('/api/hello', (req: Request, res: Response) => {
     console.log('Received request for /api/hello');
-    res.json({ message: 'Hello from the heroku!' });
+    res.json({ message: 'Hello from the build!' });
 });
 
 app.get('/api/message', (req: Request, res: Response) => {
     console.log('Received request for /api/message');
-    res.json({ message: 'This is a test message from the heroku!' });
+    res.json({ message: 'This is a test message from the build!' });
 });
 
 // Serve the static files from the React app
 app.use(express.static(path.join(__dirname, '../build')));
 
-// Handles any requests that don't match the ones aboves
+// Handles any requests that don't match the ones above
 app.get('*', (req: Request, res: Response) => {
     if (req.originalUrl.startsWith('/api')) {
         console.log(`API route not found: ${req.originalUrl}`);
@@ -55,8 +55,7 @@ app.listen(PORT, () => {
 });
 
 
-
-////////////////////////////////////////////////
+///////////////////////////
 
 
 // import express, { Request, Response, NextFunction } from "express";
@@ -77,24 +76,26 @@ app.listen(PORT, () => {
 
 // // API ROUTES
 // app.get('/api/hello', (req: Request, res: Response) => {
-//     res.json({ message: 'Hello from the prod!' });
+//     console.log('Received request for /api/hello');
+//     res.json({ message: 'Hello from the heroku!' });
 // });
 
 // app.get('/api/message', (req: Request, res: Response) => {
-//     res.json({ message: 'This is a test message from the prod!' });
+//     console.log('Received request for /api/message');
+//     res.json({ message: 'This is a test message from the heroku!' });
 // });
 
 // // Serve the static files from the React app
 // app.use(express.static(path.join(__dirname, '../build')));
 
-// // Handles any requests that don't match the ones above
+// // Handles any requests that don't match the ones aboves
 // app.get('*', (req: Request, res: Response) => {
+//     if (req.originalUrl.startsWith('/api')) {
+//         console.log(`API route not found: ${req.originalUrl}`);
+//         return res.status(404).json({ error: 'Not found' });
+//     }
+//     console.log(`Serving the file for URL: ${req.originalUrl}`);
 //     res.sendFile(path.join(__dirname, '../build', 'index.html'));
-// });
-
-// // CATCH-ALL ROUTE HANDLER FOR ANY REQUESTS TO AN UNKNOWN ROUTE
-// app.use('*', (request: Request, response: Response) => {
-//     response.status(404).send('Error: Page not found');
 // });
 
 // // CONFIGURE EXPRESS GLOBAL ERROR HANDLER
