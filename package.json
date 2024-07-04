@@ -33,6 +33,7 @@
   "build-client": "react-scripts build --max-old-space-size=512",
   "build-server": "tsc --project tsconfig.build.json",
   "serve": "concurrently \"serve -s build -l 3000\" \"node build/server.js\"",
+  "serve-local": "concurrently \"serve -s build -l 3000\" \"node build/server.js\"",
   "test": "react-scripts test",
   "eject": "react-scripts eject",
   "postinstall": "npm run build"
