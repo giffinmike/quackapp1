@@ -7,7 +7,7 @@ const App = () => {
 const fetchHello = async () => {
   try {
     const response = await fetch(`${process.env.REACT_APP_API_URL}/api/hello`);
-    console.log(response); // Add this line to debug the response
+    console.log('API URL:', process.env.REACT_APP_API_URL); // Debugging line
     if (!response.ok) throw new Error('Network response was not ok');
     const data = await response.json();
     setHelloResponse(data.message);
@@ -19,7 +19,7 @@ const fetchHello = async () => {
 const fetchMessage = async () => {
   try {
     const response = await fetch(`${process.env.REACT_APP_API_URL}/api/message`);
-    console.log(response); // Add this line to debug the response
+    console.log('API URL:', process.env.REACT_APP_API_URL); // Debugging line
     if (!response.ok) throw new Error('Network response was not ok');
     const data = await response.json();
     setMessageResponse(data.message);
