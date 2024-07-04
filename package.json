@@ -29,7 +29,7 @@
     "server": "nodemon --watch backend --exec ts-node-esm backend/server.ts",
     "client": "PORT=3000 react-scripts start",
     "build": "npm run build-client && npm run build-server",
-    "build-client": "react-scripts build",
+    "build-client": "react-scripts build --max-old-space-size=512",
     "build-server": "tsc --project tsconfig.build.json",
     "serve": "concurrently \"serve -s build -l 3000\" \"node build/server.js\"",
     "test": "react-scripts test",
