@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, '../build')));
 // GET ROUTE
 app.get('/test', async (req: Request, res: Response) => {
     console.log("HOLA TURKEY hello");
-    res.send("HOLA TURKEY punk");
+    res.send("HOLA TURKEY punk sdf");
 });
 
 // An example API endpoint
