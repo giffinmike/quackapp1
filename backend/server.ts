@@ -1,5 +1,4 @@
 import express, { Request, Response, NextFunction } from "express";
-import mongoose from "mongoose";
 import cors from "cors";
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -15,24 +14,17 @@ const __dirname = path.dirname(__filename);
 app.use(cors());
 app.use(express.json()); // Add this line to parse JSON bodies
 
+// API ROUTES
+app.get('/api/hello', (req: Request, res: Response) => {
+    res.json({ message: 'Hello from the prod!' });
+});
+
+app.get('/api/message', (req: Request, res: Response) => {
+    res.json({ message: 'This is a test message from the prod!' });
+});
+
 // Serve the static files from the React app
 app.use(express.static(path.join(__dirname, '../build')));
-
-// GET ROUTE
-app.get('/test', async (req: Request, res: Response) => {
-    console.log("HOLA TURKEY hello");
-    res.send("HOLA TURKEY punk heroku");
-});
-
-// An example API endpoint
-app.get('/api/hello', (req: Request, res: Response) => {
-    res.send({ message: 'Hello from the server!' });
-});
-
-// New GET endpoint for testing
-app.get('/api/message', (req: Request, res: Response) => {
-    res.send({ message: 'This is a test message from the server!' });
-});
 
 // Handles any requests that don't match the ones above
 app.get('*', (req: Request, res: Response) => {
@@ -41,7 +33,7 @@ app.get('*', (req: Request, res: Response) => {
 
 // CATCH-ALL ROUTE HANDLER FOR ANY REQUESTS TO AN UNKNOWN ROUTE
 app.use('*', (request: Request, response: Response) => {
-    response.status(404).send('Error: Page not found for shizzle');
+    response.status(404).send('Error: Page not found');
 });
 
 // CONFIGURE EXPRESS GLOBAL ERROR HANDLER
@@ -55,7 +47,7 @@ app.use((error: any, request: Request, response: Response, next: NextFunction) =
     response.status(errorObj.status).json(errorObj.message.err);
 });
 
-// START SERVERs
+// START SERVER
 app.listen(PORT, () => {
     console.log(`The server is connected and running on port: ${PORT}`);
 });
