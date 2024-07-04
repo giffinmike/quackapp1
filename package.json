@@ -26,17 +26,17 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-  "start": "concurrently \"npm run server\" \"npm run client\"",
-  "server": "nodemon --watch backend --exec node --loader ts-node/esm backend/server.ts",
-  "client": "PORT=3000 react-scripts start",
-  "build": "npm run build-client && npm run build-server",
-  "build-client": "react-scripts build --max-old-space-size=512",
-  "build-server": "tsc --project tsconfig.build.json",
-  "serve": "concurrently \"serve -s build -l 3000\" \"node build/server.js\"",
-  "serve-local": "concurrently \"serve -s build -l 3000\" \"node build/server.js\"",
-  "test": "react-scripts test",
-  "eject": "react-scripts eject",
-  "postinstall": "npm run build"
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "nodemon --watch backend --exec node --loader ts-node/esm backend/server.ts",
+    "client": "PORT=3000 react-scripts start",
+    "build": "npm run build-client && npm run build-server",
+    "build-client": "react-scripts build --max-old-space-size=512",
+    "build-server": "tsc --project tsconfig.build.json",
+    "serve": "concurrently \"serve -s build -l 3000\" \"node build/server.js\"",
+    "serve-local": "concurrently \"serve -s build -l 3000\" \"node build/server.js\"",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "postinstall": "npm run build"
   },
   "eslintConfig": {
     "extends": [
@@ -62,6 +62,7 @@
     "@types/express": "^4.17.21",
     "concurrently": "^8.2.2",
     "nodemon": "^2.0.20",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "workbox-webpack-plugin": "^7.1.0"
   }
 }
