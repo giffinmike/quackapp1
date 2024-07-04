@@ -28,7 +28,7 @@ app.get('/api/message', (req: Request, res: Response) => {
 // Serve the static files from the React app
 app.use(express.static(path.join(__dirname, '../build')));
 
-// Handles any requests that don't match the ones above
+// Handles any requests that don't match the ones aboves
 app.get('*', (req: Request, res: Response) => {
     if (req.originalUrl.startsWith('/api')) {
         console.log(`API route not found: ${req.originalUrl}`);
