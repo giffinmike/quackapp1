@@ -29,6 +29,11 @@ app.get('/api/hello', (req: Request, res: Response) => {
     res.send({ message: 'Hello from the server!' });
 });
 
+// New GET endpoint for testing
+app.get('/api/message', (req: Request, res: Response) => {
+    res.send({ message: 'This is a test message from the server!' });
+});
+
 // Handles any requests that don't match the ones above
 app.get('*', (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname, '../build', 'index.html'));
@@ -39,7 +44,7 @@ app.use('*', (request: Request, response: Response) => {
     response.status(404).send('Error: Page not found for shizzle');
 });
 
-// CONFIGURE EXPRESS GLOBAL ERROR HANDLERs
+// CONFIGURE EXPRESS GLOBAL ERROR HANDLER
 app.use((error: any, request: Request, response: Response, next: NextFunction) => {
     const defaultErr = {
         log: 'Express error handler caught unknown middleware error',
