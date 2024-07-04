@@ -6,7 +6,11 @@ const App = () => {
 
   const fetchHello = async () => {
   try {
-    const response = await fetch('http://localhost:5001/api/hello');
+
+    // const response = await fetch('http://localhost:5001/api/hello');
+
+    const response = await fetch('https://quackapp1-6c9f5ed59cf4.herokuapp.com/api/hello');
+
     console.log(response); // Add this line to debug the response
     if (!response.ok) throw new Error('Network response was not ok');
     const data = await response.json();
@@ -18,7 +22,11 @@ const App = () => {
 
 const fetchMessage = async () => {
   try {
-    const response = await fetch('http://localhost:5001/api/message');
+
+    // const response = await fetch('http://localhost:5001/api/message');
+
+    const response = await fetch('https://quackapp1-6c9f5ed59cf4.herokuapp.com/api/message');
+
     console.log(response); // Add this line to debug the response
     if (!response.ok) throw new Error('Network response was not ok');
     const data = await response.json();
