@@ -5,26 +5,28 @@ const App = () => {
   const [messageResponse, setMessageResponse] = useState('');
 
   const fetchHello = async () => {
-    try {
-      const response = await fetch('/api/hello');
-      if (!response.ok) throw new Error('Network response was not ok');
-      const data = await response.json();
-      setHelloResponse(data.message);
-    } catch (error) {
-      console.error('Error fetching hello:', error);
-    }
-  };
+  try {
+    const response = await fetch('http://localhost:5001/api/hello');
+    console.log(response); // Add this line to debug the response
+    if (!response.ok) throw new Error('Network response was not ok');
+    const data = await response.json();
+    setHelloResponse(data.message);
+  } catch (error) {
+    console.error('Error fetching hello:', error);
+  }
+};
 
-  const fetchMessage = async () => {
-    try {
-      const response = await fetch('/api/message');
-      if (!response.ok) throw new Error('Network response was not ok');
-      const data = await response.json();
-      setMessageResponse(data.message);
-    } catch (error) {
-      console.error('Error fetching message:', error);
-    }
-  };
+const fetchMessage = async () => {
+  try {
+    const response = await fetch('http://localhost:5001/api/message');
+    console.log(response); // Add this line to debug the response
+    if (!response.ok) throw new Error('Network response was not ok');
+    const data = await response.json();
+    setMessageResponse(data.message);
+  } catch (error) {
+    console.error('Error fetching message:', error);
+  }
+};
 
   return (
     <div>
@@ -38,20 +40,3 @@ const App = () => {
 };
 
 export default App;
-
-
-
-
-////////
-
-// import React from 'react';
-
-// function App() {
-//   return (
-//     <div>
-//       <p>Hello Turkey Times heroku</p>
-//     </div>
-//   );
-// }
-
-// export default App;
