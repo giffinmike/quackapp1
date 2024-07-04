@@ -3,7 +3,7 @@ import React from 'react';
 function App() {
   return (
     <div>
-      <p>Hello Turkey Times 2</p>
+      <p>Hello Turkey Times heroku</p>
     </div>
   );
 }
