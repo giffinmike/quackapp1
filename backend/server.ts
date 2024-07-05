@@ -17,12 +17,12 @@ app.use(express.json()); // Add this line to parse JSON bodie
 // API ROUTES
 app.get('/api/hello', (req: Request, res: Response) => {
     console.log('Received request for /api/hello');
-    res.json({ message: 'Hello from the server!' });
+    res.json({ message: 'Hello from the happen!' });
 });
 
 app.get('/api/message', (req: Request, res: Response) => {
     console.log('Received request for /api/message');
-    res.json({ message: 'This is a test message from the server!' });
+    res.json({ message: 'This is a test message from the happen!' });
 });
 
 // Serve the static files from the React app
