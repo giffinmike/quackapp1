@@ -35,7 +35,7 @@ app.get('/api/message', (req: Request, res: Response) => {
   res.json({ message: 'This is a test message from the wwwwwsss!' });
 });
 
-// API Route imports
+// API Route import
 // import userRoutes from './routes/userRoutes.js';
 import scriptRoutes from './routes/scriptRoutes.js';
 import sceneRoutes from './routes/sceneRoutes.js';
