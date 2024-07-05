@@ -39,7 +39,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "postinstall": "npm run build",
-    "heroku-postbuild": "npm install && npm run build",
     "format": "prettier --write src/**/*.{js,jsx,ts,tsx}",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'"
   },
