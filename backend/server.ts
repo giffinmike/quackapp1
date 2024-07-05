@@ -2,6 +2,14 @@ import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import dotenv from 'dotenv';
+import connectDB from './config/db.js'; // Remove the .ts extension
+
+// Load environment variables from .env file
+dotenv.config();
+
+// Connect to MongoDB
+connectDB();
 
 // CREATING OUR INSTANCE OF OUR EXPRESS SERVER
 const app = express();
@@ -12,23 +20,23 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 app.use(cors());
-app.use(express.json()); // Add this line to parse JSON bodie
+app.use(express.json()); // Add this line to parse JSON bodies
 
 // API ROUTES
 app.get('/api/hello', (req: Request, res: Response) => {
   console.log('Received request for /api/hello');
-  res.json({ message: 'Hello from the poopy!' });
+  res.json({ message: 'Hello from the build!' });
 });
 
 app.get('/api/message', (req: Request, res: Response) => {
   console.log('Received request for /api/message');
-  res.json({ message: 'This is a test message from the poopy!' });
+  res.json({ message: 'This is a test message from the build!' });
 });
 
 // Serve the static files from the React app
 app.use(express.static(path.join(__dirname, '../build')));
 
-// Handles any requests that don't match the ones aboves
+// Handles any requests that don't match the ones above
 app.get('*', (req: Request, res: Response) => {
   if (req.originalUrl.startsWith('/api')) {
     console.log(`API route not found: ${req.originalUrl}`);
@@ -47,6 +55,7 @@ app.use(
       message: { err: 'An error occurred' },
     };
     const errorObj = Object.assign(defaultErr, { error });
+    console.error('Global error handler:', errorObj);
     response.status(errorObj.status).json(errorObj.message.err);
   }
 );
