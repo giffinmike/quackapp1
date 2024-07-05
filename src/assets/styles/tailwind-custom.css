@@ -1,0 +1,170 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Global Styles */
+@layer base {
+    :root {
+        --text-light: rgba(255, 255, 255, 0.87);
+        --text-dark: #213547;
+        --bg-dark: #242424;
+        --bg-light: #ffffff;
+        --primary: #646cff;
+        --primary-hover: #535bf2;
+        --button-dark: #1a1a1a;
+        --button-light: #f9f9f9;
+
+        /* Typography */
+        font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+        @apply font-medium text-primary no-underline;
+    }
+
+    a:hover {
+        @apply text-primary-hover;
+    }
+
+    /* comment this out when you want to use dark mode properly*/
+    body {
+        @apply bg-background-dark text-text-dark;
+    }
+
+    /* body {
+        @apply bg-background-light text-text-dark;
+    } */
+
+    .dark body {
+        @apply bg-background-dark text-text-light;
+    }
+
+    h1 {
+        @apply text-4xl lg:text-5xl xl:text-6xl leading-tight;
+    }
+
+    button:focus,
+    button:focus-visible {
+        outline: 4px auto -webkit-focus-ring-color;
+    }
+}
+
+@layer components {
+    .btn {
+        @apply rounded-lg border border-transparent px-4 py-2 text-base font-medium cursor-pointer transition-colors duration-200;
+    }
+
+    .btn-primary {
+        @apply bg-primary text-white hover:bg-primary-hover;
+    }
+
+    .btn-secondary {
+        @apply bg-button-light text-black hover:bg-primary;
+    }
+}
+
+@layer utilities {
+    .bg-bg-dark {
+        @apply bg-[var(--bg-dark)];
+    }
+
+    .bg-bg-light {
+        @apply bg-[var(--bg-light)];
+    }
+
+    .text-text-light {
+        @apply text-[var(--text-light)];
+    }
+
+    .text-text-dark {
+        @apply text-[var(--text-dark)];
+    }
+
+    .text-primary {
+        @apply text-[var(--primary)];
+    }
+
+    .text-primary-hover {
+        @apply text-[var(--primary-hover)];
+    }
+
+    .bg-button-dark {
+        @apply bg-[var(--button-dark)];
+    }
+
+    .bg-button-light {
+        @apply bg-[var(--button-light)];
+    }
+
+    .custom-combined {
+        @apply flex justify-center items-center flex-col text-[1rem] text-red-500 bg-black p-8 m-8;
+    }
+}
+
+.paddingHorizontal {
+    /* padding-left: 1.5rem;
+    padding-right: 1.5rem; */
+}
+
+.paddingVertical {
+    /* padding-top: 1.5rem;
+    padding-bottom: 1.5rem; */
+}
+
+/* Responsive adjustments */
+@media (orientation: portrait) {}
+
+@media (orientation: landscape) {}
+
+/* Additional adjustments for smaller screens */
+@media (max-width: 600px) {}
+
+
+
+
+
+
+/* xx-large devices (larger desktops) @media (max-width: 1440px and up) */
+/* @media screen and (max-width:90rem) {
+    html {
+        font-size: calc(0.7241091314031181rem + 0.4454342984409799vw);
+    }
+} */
+
+/* x-large devices (large desktops) @media (max-width: 1200px and up) */
+/* @media screen and (max-width:75rem) {
+    html {
+        font-size: calc(0.7241091314031181rem + 0.4454342984409799vw);
+    }
+} */
+
+/* large devices (desktops) @media (max-width: 992px and up) */
+/* @media screen and (max-width:62rem) {
+    html {
+        font-size: calc(0.5094866071428572rem + 0.8928571428571428vw);
+    }
+} */
+
+/* medium devices (tablets) @media (max-width: 768px and up) */
+/* @media screen and (max-width:48rem) {
+    html {
+        font-size: calc(0.8748368146214099rem + 0.2610966057441253vw);
+    }
+} */
+
+/* small devices (landscape phones) @media (max-width: 576px and up) */
+/* @media screen and (max-width:36rem) {
+    html {
+        font-size: calc(0.8748368146214099rem + 0.2610966057441253vw);
+    }
+} */
+
+/* x-small devices (landscape phones) @media (max-width: 280px and up) */
+/* @media screen and (max-width:17.5rem) {
+    html {
+        font-size: calc(0.8748368146214099rem + 0.2610966057441253vw);
+    }
+} */
