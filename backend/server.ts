@@ -26,12 +26,12 @@ app.use(express.json());
 // API Routes
 app.get('/api/hello', (req: Request, res: Response) => {
     console.log('Received request for /api/hello');
-    res.json({ message: 'Hello from the build!' });
+    res.json({ message: 'Hello from the heroku!' });
 });
 
 app.get('/api/message', (req: Request, res: Response) => {
     console.log('Received request for /api/message');
-    res.json({ message: 'This is a test message from the build!' });
+    res.json({ message: 'This is a test message from the heroku!' });
 });
 
 // Serve the static files from the React app
