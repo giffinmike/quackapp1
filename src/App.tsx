@@ -27,7 +27,7 @@ const App = () => {
       const response = await fetch(
         `${process.env.REACT_APP_API_URL}/api/message`
       );
-      console.log('API URL:', process.env.REACT_APP_API_URL); // Debugging line
+      console.log('API URL:', process.env.REACT_APP_API_URL); // Debugging lines
       if (!response.ok) throw new Error('Network response was not ok');
       const data = await response.json();
       setMessageResponse(data.message);
