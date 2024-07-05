@@ -1,0 +1,81 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.mainContainer {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 50.5rem;
+}
+
+.characterDeck {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    /* background-color: rgba(148, 148, 148, 0.5); */
+    /* background-color: rgba(44, 44, 44, 1.0); */
+    background-color: #222222;
+    width: 50.5rem;
+    color: black;
+    text-align: center;
+    border-top: 3px solid black;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 10px 10px 0 0;
+    padding: .5rem 1rem;
+    overflow: hidden;
+    min-height: 2.7rem;
+    /* resize: vertical; */
+}
+
+.resizeHandle {
+    width: 20px;
+    height: 20px;
+    background: grey;
+    cursor: ns-resize;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    color: white;
+    font-size: 1rem;
+    padding: 0.5rem;
+}
+
+.plusSign {
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.characterDeckTitle {
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+@media (max-width: 600px) {
+    .characterDeck {
+        width: 100%;
+    }
+
+    .resizeHandle {
+        padding: 0.9rem;
+    }
+
+    .plusSign {
+        font-size: 1.2rem;
+    }
+}

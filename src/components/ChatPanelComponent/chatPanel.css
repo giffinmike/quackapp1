@@ -1,0 +1,213 @@
+.chatPanel {
+    width: 20rem;
+    background-color: #1e1e1e;
+    color: #d1d1d1;
+    height: 100vh;
+    position: fixed;
+    top: 3.1rem;
+    right: 0;
+    border-left: 1px solid #333;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: width 0.3s ease, visibility 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px 0 0 10px;
+    z-index: 1000;
+}
+
+.chatPanel.collapsed {
+    width: 2.5rem;
+    padding: 1rem 0.5rem;
+}
+
+.chatPanelContent {
+    margin-top: 2.0rem;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.chatTitleContainer {
+    border-bottom: 1px solid #333;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.chatTitle {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #d1d1d1;
+}
+
+.toggleButtonContainer2 {
+    position: absolute;
+    top: -0.3rem;
+    left: 0.0rem;
+    width: 2.5rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggleButton2 {
+    background: none;
+    border: none;
+    border-radius: 0px 0px 10px 0px;
+    color: white;
+    cursor: pointer;
+    background-color: #444444;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    outline: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    visibility: visible;
+}
+
+.toggleButton2:hover {
+    background-color: #555555;
+}
+
+.toggleButton2:focus,
+.toggleButton2:active {
+    outline: none;
+    border: none;
+}
+
+.chatContainer {
+    height: 42rem;
+    overflow: auto;
+}
+
+.chatContainer::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chatContainer::-webkit-scrollbar-track {
+    background: #1e1e1e;
+}
+
+.chatContainer::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 10px;
+    border: 2px solid #1e1e1e;
+}
+
+.chatContainer::-webkit-scrollbar-thumb:hover {
+    background-color: #777;
+}
+
+.messagesContainer {
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    margin-left: 0.5rem;
+    padding: 0 1rem;
+    width: 95%;
+}
+
+.message {
+    padding-bottom: 1rem;
+}
+
+.sent {
+    color: white;
+}
+
+.received {
+    color: white;
+}
+
+.sender {
+    font-weight: 400;
+    font-size: .813rem;
+}
+
+.timestamp {
+    font-size: .7rem;
+    color: #888;
+    margin-left: .5rem;
+}
+
+.textContainer {}
+
+.text {
+    display: inline-block;
+    padding: 0.4rem 0.7rem;
+    border-radius: 10px;
+    color: white;
+    font-size: 0.875rem;
+    background-color: rgb(49, 49, 49);
+    line-height: 1.05rem;
+}
+
+.inputContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #1e1e1e;
+    position: absolute;
+    bottom: 0;
+    width: calc(100% - 2rem);
+    height: 6rem;
+    margin-bottom: 4.5rem;
+    box-sizing: border-box;
+}
+
+.inputContainer textarea {
+    flex: 1;
+    border: none;
+    background-color: #1e1e1e;
+    color: white;
+    resize: none;
+    height: 100%;
+    word-wrap: break-word;
+    width: calc(150% - 10rem);
+    margin-left: 1.7rem;
+    overflow-y: hidden;
+    outline: none;
+    border-top: 1px solid #333;
+    font-size: 0.8rem;
+    line-height: 1.05rem;
+}
+
+.inputContainer textarea::placeholder {
+    font-size: 0.813rem;
+    color: #888;
+}
+
+.inputContainer textarea:focus {
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+
+.sendButton {
+    margin-top: 10px;
+    margin-left: 17rem;
+    height: 13px;
+    width: 13px;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+}
+
+.sendButton:hover {}
+
+@media only screen and (max-width: 1024px) {
+    .chatPanel {
+        display: none;
+    }
+}

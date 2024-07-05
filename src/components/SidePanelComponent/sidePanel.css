@@ -1,0 +1,194 @@
+.sidePanel {
+    width: 20rem;
+    background-color: #222222;
+    color: white;
+    height: 100vh;
+    position: fixed;
+    top: 3.1rem;
+    left: 0;
+    padding: 1rem;
+    border-right: 1px solid #616161;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: width 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0 10px;
+}
+
+.sidePanel.collapsed {
+    width: 2.5rem;
+    padding: 1rem 0.5rem;
+}
+
+.toggleButtonContainer {
+    position: absolute;
+    top: -0.3rem;
+    right: -0.21rem;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggleButton {
+    background: none;
+    border: none;
+    border-radius: 0 0 0 10px;
+    color: white;
+    cursor: pointer;
+    background-color: #444444;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    outline: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.toggleButton:hover {
+    background-color: #555555;
+}
+
+.toggleButton:focus,
+.toggleButton:active {
+    outline: none;
+    border: none;
+}
+
+.sidePanelContent {
+    margin-top: 1.5rem;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.titleContainer {
+    border-bottom: 1px solid #3c3d3f;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.scriptName {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #ffffff;
+    /* text-transform: uppercase; */
+}
+
+/* Section styling */
+.section {
+    margin-bottom: 2rem;
+}
+
+.sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #3c3d3f;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+}
+
+.addButton {
+    background: none;
+    border: none;
+    color: #b8b8b8;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.addButton:hover {
+    color: white;
+}
+
+.sidebarItem {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+    font-size: 0.875rem;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.sidebarItem:hover {
+    background: #555555;
+    color: #ffffff;
+}
+
+.sidebarItem svg {
+    margin-right: 0.5rem;
+}
+
+/* Add scroll for characters section */
+.charactersList {
+    max-height: calc(100vh - 400px);
+    /* Adjust this value as needed */
+    overflow-y: auto;
+}
+
+.charactersList::-webkit-scrollbar {
+    width: 8px;
+}
+
+.charactersList::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 4px;
+}
+
+.charactersList::-webkit-scrollbar-thumb:hover {
+    background-color: #666;
+}
+
+.statusDot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: 0.15rem;
+}
+
+.statusDot.online {
+    background-color: #00ff00;
+    /* box-shadow: 0 0 10px 0 #00ff00; */
+}
+
+.statusDot.offline {
+    background-color: #ff0000;
+    /* box-shadow: 0 0 10px 0 #ff0000; */
+}
+
+/* MEDIA QUERY BREAKPOINTS: */
+
+/* Extra Extra Large Devices (Large Desktops, 1400px and down) */
+@media only screen and (max-width: 140px) {}
+
+/* Extra Large Devices (Desktops, 1200px and down) */
+@media only screen and (max-width: 1200px) {}
+
+/* Large Devices (Laptops, 1024px and down) */
+@media only screen and (max-width: 1024px) {
+    .sidePanel {
+        display: none;
+    }
+}
+
+/* Medium Devices (Tablets, 768px and down) */
+@media only screen and (max-width: 768px) {}
+
+/* Small Devices (Phones, 600px and down) */
+@media only screen and (max-width: 600px) {}
+
+/* Extra Small Devices (Phones, 360px and down) */
+@media only screen and (max-width: 360px) {}
