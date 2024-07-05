@@ -49,7 +49,7 @@ app.use('/api/scenes', sceneRoutes);
 app.use('/api/sceneVersions', sceneVersionRoutes);
 app.use('/api/sceneVersionContent', sceneVersionContentRoutes);
 
-// Serve the static files from the React app
+// Serve the static files from the React apps
 app.use(express.static(path.join(__dirname, '../build')));
 
 // Handles any requests that don't match the ones aboves
