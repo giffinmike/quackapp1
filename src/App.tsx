@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 // import { Tiptap } from './components/TipTapComponent/TiptapComponent';
 // import { AppDataInterface } from './interfaces/interfaces';
-// import MyErrorBoundary from './MyErrorBoundary';
+import MyErrorBoundary from './MyErrorBoundary';
 
 const App = () => {
   const [helloResponse, setHelloResponse] = useState('');
@@ -38,7 +38,7 @@ const App = () => {
 
   return (
     <div>
-      <h1>Test API Requests adaasdfsdf sssd</h1>
+      <h1>Test API Requests adaasdfsdf sssasdfd</h1>
       <button onClick={fetchHello}>Fetch Hello</button>
       <p>{helloResponse}</p>
       <button onClick={fetchMessage}>Fetch Message</button>

@@ -27,12 +27,12 @@ app.use(express.json()); // Add this line to parse JSON bodies
 // API ROUTES
 app.get('/api/hello', (req: Request, res: Response) => {
   console.log('Received request for /api/hello');
-  res.json({ message: 'Hello from the heroku!' });
+  res.json({ message: 'Hello from the yrt!' });
 });
 
 app.get('/api/message', (req: Request, res: Response) => {
   console.log('Received request for /api/message');
-  res.json({ message: 'This is a test message from the heroku!' });
+  res.json({ message: 'This is a test message from the yrt!' });
 });
 
 // API Route import
