@@ -1,6 +1,4 @@
-// The service layer handles the business logic, such as creating and fetching users. This helps keep the controller lean and focused on handling HTTP requests and responses.
-
-import User, { IUser } from "../models/userModel.js";
+import User, { IUser } from '../models/userModel';
 
 class UserService {
   async createUser(userData: Partial<IUser>): Promise<IUser> {

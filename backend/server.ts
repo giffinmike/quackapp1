@@ -3,6 +3,8 @@ import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
+import bodyParser from 'body-parser';
+
 import connectDB from './config/db.js'; // Remove the .ts extension
 
 // Load environment variables from .env file
@@ -25,13 +27,27 @@ app.use(express.json()); // Add this line to parse JSON bodies
 // API ROUTES
 app.get('/api/hello', (req: Request, res: Response) => {
   console.log('Received request for /api/hello');
-  res.json({ message: 'Hello from the qqqqq!' });
+  res.json({ message: 'Hello from the wwwwwsss!' });
 });
 
 app.get('/api/message', (req: Request, res: Response) => {
   console.log('Received request for /api/message');
-  res.json({ message: 'This is a test message from the qqqqq!' });
+  res.json({ message: 'This is a test message from the wwwwwsss!' });
 });
+
+// API Route imports
+// import userRoutes from './routes/userRoutes.js';
+import scriptRoutes from './routes/scriptRoutes.js';
+import sceneRoutes from './routes/sceneRoutes.js';
+import sceneVersionRoutes from './routes/sceneVersionRoutes.js';
+import sceneVersionContentRoutes from './routes/sceneVersionContentRoutes.js';
+
+// API routes
+// app.use('/api/users', userRoutes);
+app.use('/api/scripts', scriptRoutes);
+app.use('/api/scenes', sceneRoutes);
+app.use('/api/sceneVersions', sceneVersionRoutes);
+app.use('/api/sceneVersionContent', sceneVersionContentRoutes);
 
 // Serve the static files from the React app
 app.use(express.static(path.join(__dirname, '../build')));
@@ -65,12 +81,20 @@ app.listen(PORT, () => {
   console.log(`The server is connected and running on port: ${PORT}`);
 });
 
-///////////////////////////
+///////////////////////////////////
 
-// import express, { Request, Response, NextFunction } from "express";
-// import cors from "cors";
+// import express, { Request, Response, NextFunction } from 'express';
+// import cors from 'cors';
 // import path from 'path';
 // import { fileURLToPath } from 'url';
+// import dotenv from 'dotenv';
+// import connectDB from './config/db.js'; // Remove the .ts extension
+
+// // Load environment variables from .env file
+// dotenv.config();
+
+// // Connect to MongoDB
+// connectDB();
 
 // // CREATING OUR INSTANCE OF OUR EXPRESS SERVER
 // const app = express();
@@ -85,13 +109,13 @@ app.listen(PORT, () => {
 
 // // API ROUTES
 // app.get('/api/hello', (req: Request, res: Response) => {
-//     console.log('Received request for /api/hello');
-//     res.json({ message: 'Hello from the heroku!' });
+//   console.log('Received request for /api/hello');
+//   res.json({ message: 'Hello from the qqqqq!' });
 // });
 
 // app.get('/api/message', (req: Request, res: Response) => {
-//     console.log('Received request for /api/message');
-//     res.json({ message: 'This is a test message from the heroku!' });
+//   console.log('Received request for /api/message');
+//   res.json({ message: 'This is a test message from the qqqqq!' });
 // });
 
 // // Serve the static files from the React app
@@ -99,26 +123,29 @@ app.listen(PORT, () => {
 
 // // Handles any requests that don't match the ones aboves
 // app.get('*', (req: Request, res: Response) => {
-//     if (req.originalUrl.startsWith('/api')) {
-//         console.log(`API route not found: ${req.originalUrl}`);
-//         return res.status(404).json({ error: 'Not found' });
-//     }
-//     console.log(`Serving the file for URL: ${req.originalUrl}`);
-//     res.sendFile(path.join(__dirname, '../build', 'index.html'));
+//   if (req.originalUrl.startsWith('/api')) {
+//     console.log(`API route not found: ${req.originalUrl}`);
+//     return res.status(404).json({ error: 'Not found' });
+//   }
+//   console.log(`Serving the file for URL: ${req.originalUrl}`);
+//   res.sendFile(path.join(__dirname, '../build', 'index.html'));
 // });
 
 // // CONFIGURE EXPRESS GLOBAL ERROR HANDLER
-// app.use((error: any, request: Request, response: Response, next: NextFunction) => {
+// app.use(
+//   (error: any, request: Request, response: Response, next: NextFunction) => {
 //     const defaultErr = {
-//         log: 'Express error handler caught unknown middleware error',
-//         status: 400,
-//         message: { err: 'An error occurred' }
+//       log: 'Express error handler caught unknown middleware error',
+//       status: 400,
+//       message: { err: 'An error occurred' },
 //     };
 //     const errorObj = Object.assign(defaultErr, { error });
+//     console.error('Global error handler:', errorObj);
 //     response.status(errorObj.status).json(errorObj.message.err);
-// });
+//   }
+// );
 
 // // START SERVER
 // app.listen(PORT, () => {
-//     console.log(`The server is connected and running on port: ${PORT}`);
+//   console.log(`The server is connected and running on port: ${PORT}`);
 // });
