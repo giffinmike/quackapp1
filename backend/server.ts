@@ -1,20 +1,29 @@
-import express, { Request, Response, NextFunction } from "express";
-import cors from "cors";
+import express, { Request, Response, NextFunction } from 'express';
+import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import connectDB from './config/db.js';
+import dotenv from 'dotenv';
 
-// CREATING OUR INSTANCE OF OUR EXPRESS SERVER
+// Load environment variables from .env file
+dotenv.config();
+
+// Connect to MongoDB
+connectDB();
+
+// Create an instance of Express
 const app = express();
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5001; // Ensure this uses port 5001
 
 // Get __dirname in ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Middleware
 app.use(cors());
-app.use(express.json()); // Add this line to parse JSON bodie
+app.use(express.json());
 
-// API ROUTES
+// API Routes
 app.get('/api/hello', (req: Request, res: Response) => {
     console.log('Received request for /api/hello');
     res.json({ message: 'Hello from the build!' });
@@ -28,7 +37,7 @@ app.get('/api/message', (req: Request, res: Response) => {
 // Serve the static files from the React app
 app.use(express.static(path.join(__dirname, '../build')));
 
-// Handles any requests that don't match the ones aboves
+// Handles any requests that don't match the ones above
 app.get('*', (req: Request, res: Response) => {
     if (req.originalUrl.startsWith('/api')) {
         console.log(`API route not found: ${req.originalUrl}`);
@@ -38,7 +47,7 @@ app.get('*', (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname, '../build', 'index.html'));
 });
 
-// CONFIGURE EXPRESS GLOBAL ERROR HANDLER
+// Global error handler
 app.use((error: any, request: Request, response: Response, next: NextFunction) => {
     const defaultErr = {
         log: 'Express error handler caught unknown middleware error',
@@ -49,7 +58,7 @@ app.use((error: any, request: Request, response: Response, next: NextFunction) =
     response.status(errorObj.status).json(errorObj.message.err);
 });
 
-// START SERVER
+// Start server
 app.listen(PORT, () => {
     console.log(`The server is connected and running on port: ${PORT}`);
 });
