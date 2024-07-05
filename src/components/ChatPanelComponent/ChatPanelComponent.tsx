@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
-import { FaArrowLeft, FaArrowRight, FaPaperPlane } from "react-icons/fa";
-import "./chatPanel.css";
+import React, { useState, useEffect, useRef } from 'react';
+import { FaArrowLeft, FaArrowRight, FaPaperPlane } from 'react-icons/fa';
+import './chatPanel.css';
 
 interface ChatMessage {
   sender: string;
@@ -15,10 +15,10 @@ interface Owner {
 
 const ChatPanelComponent = ({ owners }: { owners: Owner[] }) => {
   const [messages, setMessages] = useState<ChatMessage[]>(() => {
-    const savedMessages = sessionStorage.getItem("chatMessages");
+    const savedMessages = sessionStorage.getItem('chatMessages');
     return savedMessages ? JSON.parse(savedMessages) : [];
   });
-  const [newMessage, setNewMessage] = useState("");
+  const [newMessage, setNewMessage] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
@@ -41,31 +41,31 @@ const ChatPanelComponent = ({ owners }: { owners: Owner[] }) => {
 
   useEffect(() => {
     if (messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [messages]);
 
   useEffect(() => {
-    sessionStorage.setItem("chatMessages", JSON.stringify(messages));
+    sessionStorage.setItem('chatMessages', JSON.stringify(messages));
   }, [messages]);
 
   const handleSendMessage = () => {
-    if (newMessage.trim() !== "") {
+    if (newMessage.trim() !== '') {
       const timestamp = new Date().toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
+        hour: '2-digit',
+        minute: '2-digit',
       });
       setMessages([
         ...messages,
-        { sender: "You", message: newMessage, timestamp },
+        { sender: 'You', message: newMessage, timestamp },
       ]);
-      setNewMessage("");
+      setNewMessage('');
     }
   };
 
   return (
     <div
-      className={`chatPanel ${isOpen || isHovered ? "open" : "collapsed"}`}
+      className={`chatPanel ${isOpen || isHovered ? 'open' : 'collapsed'}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -84,7 +84,7 @@ const ChatPanelComponent = ({ owners }: { owners: Owner[] }) => {
               {messages.map((msg, index) => (
                 <div
                   key={index}
-                  className={`message ${msg.sender === "You" ? "sent" : "received"}`}
+                  className={`message ${msg.sender === 'You' ? 'sent' : 'received'}`}
                 >
                   <span className="sender">{msg.sender}</span>
                   <span className="timestamp">{msg.timestamp}</span>
@@ -114,6 +114,7 @@ const ChatPanelComponent = ({ owners }: { owners: Owner[] }) => {
 };
 
 export default ChatPanelComponent;
+
 /////////////////////////////
 
 // import React, { useState, useEffect, useRef } from "react";

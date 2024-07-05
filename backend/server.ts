@@ -5,7 +5,14 @@ import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 
-import connectDB from './config/db.js'; // Remove the .ts extension
+import connectDB from './config/db.js';
+
+// API Route import
+// import userRoutes from './routes/userRoutes.js';
+import scriptRoutes from './routes/scriptRoutes.js';
+import sceneRoutes from './routes/sceneRoutes.js';
+import sceneVersionRoutes from './routes/sceneVersionRoutes.js';
+import sceneVersionContentRoutes from './routes/sceneVersionContentRoutes.js'; // Remove the .ts extension
 
 // Load environment variables from .env file
 dotenv.config();
@@ -27,20 +34,13 @@ app.use(express.json()); // Add this line to parse JSON bodiess
 // API ROUTES
 app.get('/api/hello', (req: Request, res: Response) => {
   console.log('Received request for /api/hello');
-  res.json({ message: 'Hello from the yrt!' });
+  res.json({ message: 'Hello from the build!' });
 });
 
 app.get('/api/message', (req: Request, res: Response) => {
   console.log('Received request for /api/message');
-  res.json({ message: 'This is a test message from the yrt!' });
+  res.json({ message: 'This is a test message from the build!' });
 });
-
-// API Route import
-// import userRoutes from './routes/userRoutes.js';
-import scriptRoutes from './routes/scriptRoutes.js';
-import sceneRoutes from './routes/sceneRoutes.js';
-import sceneVersionRoutes from './routes/sceneVersionRoutes.js';
-import sceneVersionContentRoutes from './routes/sceneVersionContentRoutes.js';
 
 // API routes
 // app.use('/api/users', userRoutes);

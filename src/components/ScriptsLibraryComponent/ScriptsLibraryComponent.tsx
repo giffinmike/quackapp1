@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { getApiBaseUrl } from "../../utils/getApiBaseUrl";
-import PageIcon1 from "../../assets/images/MattPDFSCript1.png";
-import EditScriptModal from "./modals/EditScriptModal/EditScriptModal";
-import AddScriptModal from "./modals/AddScriptModal/AddScriptModal";
-import { motion } from "framer-motion";
-import styles from "./ScriptsLibraryComponent.module.css";
-import axios from "axios";
-import { error } from "winston";
+import React, { useState, useEffect } from 'react';
+// import { useNavigate } from 'react-router-dom';
+// import { getApiBaseUrl } from '../../utils/getApiBaseUrl';
+import PageIcon1 from '../../assets/images/MattPDFSCript1.png';
+import EditScriptModal from './modals/EditScriptModal/EditScriptModal';
+import AddScriptModal from './modals/AddScriptModal/AddScriptModal';
+import { motion } from 'framer-motion';
+import styles from './ScriptsLibraryComponent.module.css';
+import axios from 'axios';
 
 interface Script {
   title_page: any;
@@ -38,26 +37,26 @@ const ScriptsLibraryComponent: React.FC = () => {
   const [userData, setUserData] = useState<UserData | null>(null);
   const [clickCount, setClickCount] = useState(0);
   const [tapTimeout, setTapTimeout] = useState<NodeJS.Timeout | null>(null);
-  const API_BASE_URL = getApiBaseUrl();
+  const API_BASE_URL = process.env.REACT_APP_API_UR;
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const fetchUserData = async () => {
     try {
       const response = await axios.get(
         `${API_BASE_URL}/api/users/fetchUserById`,
         {
-          params: { id: "664e8a1b8bd40eebdcc5939b" },
-        },
+          params: { id: '664e8a1b8bd40eebdcc5939b' },
+        }
       );
-      const contentType = response.headers["content-type"];
-      if (!contentType || contentType.indexOf("application/json") === -1) {
-        throw new Error("Expected JSON response, but received non-JSON data");
+      const contentType = response.headers['content-type'];
+      if (!contentType || contentType.indexOf('application/json') === -1) {
+        throw new Error('Expected JSON response, but received non-JSON data');
       }
 
       const data = response.data;
-      if (typeof data !== "object" || Array.isArray(data)) {
-        throw new Error("Expected JSON response, but received non-JSON data");
+      if (typeof data !== 'object' || Array.isArray(data)) {
+        throw new Error('Expected JSON response, but received non-JSON data');
       }
 
       if (!Array.isArray(data.scripts_id_array)) {
@@ -65,15 +64,15 @@ const ScriptsLibraryComponent: React.FC = () => {
       }
 
       setUserData(data);
-      console.log("USER DATA", data);
+      console.log('USER DATA', data);
     } catch (error: any) {
       // Fix: Add type annotation for error
       if (error.response) {
-        console.error("Error fetching user data:", error.response.data);
+        console.error('Error fetching user data:', error.response.data);
       } else if (error.request) {
-        console.error("No response received:", error.request);
+        console.error('No response received:', error.request);
       } else {
-        console.error("Error setting up the request:", error.message);
+        console.error('Error setting up the request:', error.message);
       }
     } finally {
       setLoading(false);
@@ -85,22 +84,22 @@ const ScriptsLibraryComponent: React.FC = () => {
   }, [API_BASE_URL]);
 
   console.log(
-    "LOOKSIE request to:",
-    `${API_BASE_URL}/api/users/fetchUserById?id=664e8a1b8bd40eebdcc5939b`,
+    'LOOKSIE request to:',
+    `${API_BASE_URL}/api/users/fetchUserById?id=664e8a1b8bd40eebdcc5939b`
   );
 
   console.log(
-    "LOOKSIE Fetching user data from URL:",
-    `${API_BASE_URL}/api/users/fetchUserById?id=664e8a1b8bd40eebdcc5939b`,
+    'LOOKSIE Fetching user data from URL:',
+    `${API_BASE_URL}/api/users/fetchUserById?id=664e8a1b8bd40eebdcc5939b`
   );
 
   console.log(
-    "LOOKSIE API Base URL Desktop:",
-    import.meta.env.VITE_API_BASE_URL_DESKTOP,
+    'LOOKSIE API Base URL Desktop:',
+    process.env.VITE_API_BASE_URL_DESKTOP
   );
   console.log(
-    "LOOKSIE API Base URL Mobile:",
-    import.meta.env.VITE_API_BASE_URL_MOBILE,
+    'LOOKSIE API Base URL Mobile:',
+    process.env.VITE_API_BASE_URL_MOBILE
   );
 
   ////////test route
@@ -108,46 +107,46 @@ const ScriptsLibraryComponent: React.FC = () => {
     try {
       const response = await axios.get(`${API_BASE_URL}/api/scenes`);
       // Log the entire response headers and body for inspection
-      console.log("HOW ABOUT THIS Response headers:", response.headers);
-      console.log("HOW ABOUT THIS Response body:", response.data);
+      console.log('HOW ABOUT THIS Response headers:', response.headers);
+      console.log('HOW ABOUT THIS Response body:', response.data);
 
       // Check if the Content-Type is JSON
-      const contentType = response.headers["content-type"];
-      if (contentType && contentType.includes("application/json")) {
+      const contentType = response.headers['content-type'];
+      if (contentType && contentType.includes('application/json')) {
         // Handle JSON response
-        console.log("HOW ABOUT THIS Received JSON data:", response.data);
+        console.log('HOW ABOUT THIS Received JSON data:', response.data);
         // Process your JSON data here
       } else {
         // Handle non-JSON responses (in this case, text/html)
         const textData = response.data; // Assuming it's HTML or plain text
-        console.log("HOW ABOUT THIS Received non-JSON data:", textData);
+        console.log('HOW ABOUT THIS Received non-JSON data:', textData);
         // Handle or process HTML data as needed
       }
     } catch (error) {
-      console.error("Error fetching scenes:", error);
+      console.error('Error fetching scenes:', error);
       if (axios.isAxiosError(error)) {
         // Axios error handling
         if (error.response) {
           console.log(
-            "HOW ABOUT THIS Error response data:",
-            error.response.data,
+            'HOW ABOUT THIS Error response data:',
+            error.response.data
           );
           console.log(
-            "HOW ABOUT THIS Error response status:",
-            error.response.status,
+            'HOW ABOUT THIS Error response status:',
+            error.response.status
           );
           console.log(
-            "HOW ABOUT THIS Error response headers:",
-            error.response.headers,
+            'HOW ABOUT THIS Error response headers:',
+            error.response.headers
           );
         } else if (error.request) {
-          console.log("HOW ABOUT THIS Error request:", error.request);
+          console.log('HOW ABOUT THIS Error request:', error.request);
         } else {
-          console.log("HOW ABOUT THIS Error message:", error.message);
+          console.log('HOW ABOUT THIS Error message:', error.message);
         }
       } else {
         // Other non-Axios errors
-        console.error("HOW ABOUT THIS Non-Axios error:", error);
+        console.error('HOW ABOUT THIS Non-Axios error:', error);
       }
     }
   };
@@ -221,21 +220,21 @@ const ScriptsLibraryComponent: React.FC = () => {
   useEffect(() => {
     const fetchScriptsData = async () => {
       if (userData && userData.scripts_id_array.length > 0) {
-        const scriptIds = userData.scripts_id_array.join(",");
-        console.log("HOW ABOUT THIS scriptIds", scriptIds);
+        const scriptIds = userData.scripts_id_array.join(',');
+        console.log('HOW ABOUT THIS scriptIds', scriptIds);
 
         try {
           const response = await fetch(
-            `${API_BASE_URL}/api/scenes/fetchScriptsById?ids=${scriptIds}`,
+            `${API_BASE_URL}/api/scenes/fetchScriptsById?ids=${scriptIds}`
           );
           if (response.ok) {
             const data = await response.json();
             setScriptList(data);
           } else {
-            console.error("HOW ABOUT THIS Failed to fetch scripts data");
+            console.error('HOW ABOUT THIS Failed to fetch scripts data');
           }
         } catch (error) {
-          console.error("HOW ABOUT THIS Error fetching scripts data:", error);
+          console.error('HOW ABOUT THIS Error fetching scripts data:', error);
         } finally {
           setLoading(false);
         }
@@ -247,7 +246,7 @@ const ScriptsLibraryComponent: React.FC = () => {
   }, [userData, API_BASE_URL]);
 
   const handleSingleTap = (id: string) => {
-    navigate(`/app/${id}`);
+    // navigate(`/app/${id}`);
   };
 
   const handleDoubleTap = (script: Script) => {
@@ -292,7 +291,7 @@ const ScriptsLibraryComponent: React.FC = () => {
     newTitle: string,
     newWrittenBy: string,
     newAddress: string,
-    newPhoneNumber: string,
+    newPhoneNumber: string
   ) => {
     if (selectedScript) {
       setScriptList((prevList) =>
@@ -304,10 +303,10 @@ const ScriptsLibraryComponent: React.FC = () => {
                 writtenBy: newWrittenBy,
                 address: newAddress,
                 phoneNumber: newPhoneNumber,
-                dateModified: new Date().toISOString().split("T")[0],
+                dateModified: new Date().toISOString().split('T')[0],
               }
-            : script,
-        ),
+            : script
+        )
       );
       setIsEditModalVisible(false);
     }
@@ -317,7 +316,7 @@ const ScriptsLibraryComponent: React.FC = () => {
     newTitle: string,
     newWrittenBy: string,
     newAddress: string,
-    newPhoneNumber: string,
+    newPhoneNumber: string
   ) => {
     if (userData) {
       const newScript = {
@@ -335,21 +334,21 @@ const ScriptsLibraryComponent: React.FC = () => {
         const response = await fetch(
           `${API_BASE_URL}/api/scenes/createNewScript`,
           {
-            method: "POST",
+            method: 'POST',
             headers: {
-              "Content-Type": "application/json",
+              'Content-Type': 'application/json',
             },
             body: JSON.stringify(newScript),
-          },
+          }
         );
         if (response.ok) {
           const savedScript = await response.json();
           setScriptList((prevList) => [savedScript.script, ...prevList]); // Add the new script to the top of the list
         } else {
-          console.error("Failed to create new script");
+          console.error('Failed to create new script');
         }
       } catch (error) {
-        console.error("Error creating new script:", error);
+        console.error('Error creating new script:', error);
       }
     }
 
@@ -359,7 +358,7 @@ const ScriptsLibraryComponent: React.FC = () => {
   const handleDeleteScript = () => {
     if (selectedScript) {
       setScriptList((prevList) =>
-        prevList.filter((script) => script.title !== selectedScript.title),
+        prevList.filter((script) => script.title !== selectedScript.title)
       );
       setIsEditModalVisible(false);
     }
@@ -377,7 +376,7 @@ const ScriptsLibraryComponent: React.FC = () => {
 
   const scriptVariants = {
     hidden: { opacity: 0, x: 100 },
-    show: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 50 } },
+    show: { opacity: 1, x: 0, transition: { type: 'spring', stiffness: 50 } },
   };
 
   return (
@@ -410,7 +409,7 @@ const ScriptsLibraryComponent: React.FC = () => {
                 whileHover={{
                   scale: 1.03,
                   rotateY: 5,
-                  transition: { type: "spring", stiffness: 300 },
+                  transition: { type: 'spring', stiffness: 300 },
                 }}
               >
                 <div className={styles.inidvidualScriptsContainer}>
