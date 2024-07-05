@@ -34,7 +34,7 @@ const App = () => {
 
   return (
     <div>
-      <h1>Test API Requests adaasdfsdf sssdsfdf</h1>
+      <h1>Test API Requests adaasdfsdf sssd</h1>
       <button onClick={fetchHello}>Fetch Hello</button>
       <p>{helloResponse}</p>
       <button onClick={fetchMessage}>Fetch Message</button>
