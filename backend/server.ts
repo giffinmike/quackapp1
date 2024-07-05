@@ -22,7 +22,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 app.use(cors());
-app.use(express.json()); // Add this line to parse JSON bodies
+app.use(express.json()); // Add this line to parse JSON bodiess
 
 // API ROUTES
 app.get('/api/hello', (req: Request, res: Response) => {
