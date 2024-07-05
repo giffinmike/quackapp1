@@ -13,7 +13,7 @@ const App = () => {
       const response = await fetch(
         `${process.env.REACT_APP_API_URL}/api/hello`
       );
-      console.log('API URL:', process.env.REACT_APP_API_URL); // Debugging line
+      console.log('API URL:', process.env.REACT_APP_API_URL); // Debuggings line
       if (!response.ok) throw new Error('Network response was not ok');
       const data = await response.json();
       setHelloResponse(data.message);
